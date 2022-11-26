@@ -16,7 +16,7 @@ function Navbar() {
   }
 
   const navMenu =<>
-    {user?.email ? <p>{user?.email}</p> : <Link to='/login'><li>Login</li></Link>}
+    {user?.email ? <Link to='/dashboard'><li>Dashboard</li></Link> : <Link to='/login'><li>Login</li></Link>}
   </>
 
   return (

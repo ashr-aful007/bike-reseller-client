@@ -8,7 +8,7 @@ import { AuthContext } from '../../Context/AuthProvider';
 function Login() {
      const {register, formState: { errors },handleSubmit} = useForm()
      const [loginError, setLoginError] = useState('')
-     const {signIn} = useContext(AuthContext)
+     const {signIn,googleSignIn} = useContext(AuthContext)
      
      const handlelogin = data =>{
       setLoginError('')
@@ -21,6 +21,14 @@ function Login() {
             
             setLoginError(err.message)
           })
+     }
+
+     const hangleGooglesignIn = () =>{
+         googleSignIn()
+         .then(result =>{
+            const user = result.user
+         })
+         .catch(err =>console.log(err))
      }
   return (
     <div className='h-[800px] flex justify-center items-center'>
@@ -46,7 +54,7 @@ function Login() {
      </form>
      <p>New to bike resell <Link className='text-orange-600' to='/signup'>Create account</Link></p>
      <div className='divider'>OR</div>
-     <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+     <button onClick={hangleGooglesignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
      </div>
     </div>
   )

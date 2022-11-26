@@ -1,19 +1,34 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../Context/AuthProvider'
 
 function SignUp() {
      const {register, formState: { errors },handleSubmit} = useForm()
-     const {createUser} = useContext(AuthContext)
+     const {createUser,googleSignIn,updateUser} = useContext(AuthContext)
      
      const handlelogin = data =>{
           createUser(data.email, data.password)
           .then(result =>{
              const user = result.user
-             console.log(user)
+             toast.success('SignUp successfully')
+             const userdata = {
+                displayName: data.name
+            }  
+            updateUser(userdata)
+            .then(() =>{})
+            .catch(err => console.log(err))
           })
           .catch(err => console.log(err))
+     }
+
+     const handlegoogleSignIn = () =>{
+        googleSignIn()
+        .then(result =>{
+            const user = result.user                 
+        })
+        .catch(err => console.log(err))
      }
   return (
      <div className='h-[800px] flex justify-center items-center '>
@@ -51,7 +66,7 @@ function SignUp() {
      </form>
      <p className='text-sm'>New to bike resell <Link className='text-orange-600' to='/login'>Login</Link></p>
      <div className='divider'>OR</div>
-     <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+     <button onClick={handlegoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
      </div>
     </div>
   )
