@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
@@ -7,8 +7,10 @@ import { AuthContext } from '../../../Context/AuthProvider'
 function SignUp() {
      const {register, formState: { errors },handleSubmit} = useForm()
      const {createUser,googleSignIn,updateUser} = useContext(AuthContext)
+     const [signuperror, setError] = useState('')
      
      const handlelogin = data =>{
+        setError('')
           createUser(data.email, data.password)
           .then(result =>{
              const user = result.user
@@ -18,9 +20,13 @@ function SignUp() {
             }  
             updateUser(userdata)
             .then(() =>{})
-            .catch(err => console.log(err))
+            .catch(err => {
+                setError(err.message)
+            })
           })
-          .catch(err => console.log(err))
+          .catch(err => {
+            setError(err.message)
+          })
      }
 
      const handlegoogleSignIn = () =>{
@@ -28,10 +34,12 @@ function SignUp() {
         .then(result =>{
             const user = result.user                 
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            setError(err.message)
+        })
      }
   return (
-     <div className='h-[800px] flex justify-center items-center '>
+     <div className='h-[750px] flex justify-center items-center '>
      <div className='w-96 p-10 border-2 rounded-lg'>
           <p className='text-xl'>Sign Up</p>
           <form onSubmit={handleSubmit(handlelogin)}>
@@ -62,9 +70,11 @@ function SignUp() {
           <option value="User">User</option>
       </select>     
           <br></br>
-          <input className='btn bg-green-300 w-full' type="submit" value='Login'/>
+          <input className='btn bg-green-300 w-full' type="submit" value='Sign Up'/>     
      </form>
+     
      <p className='text-sm'>New to bike resell <Link className='text-orange-600' to='/login'>Login</Link></p>
+     {signuperror && <p className='text-red-600'>{signuperror}</p>}
      <div className='divider'>OR</div>
      <button onClick={handlegoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
      </div>
