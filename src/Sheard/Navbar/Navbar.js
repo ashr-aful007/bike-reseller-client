@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/bikeLogo.png'
+import { AuthContext } from '../../Context/AuthProvider'
 
 function Navbar() {
+
+  const {user,logOut} = useContext(AuthContext)
+  const handleSignOut = () =>{
+       logOut()
+       .then(() =>{
+        toast.success('Log out successfully')
+       })
+       .catch(err => console.log(err))
+  }
+
   const navMenu =<>
-  hello
+    {user?.email ? <p>{user?.email}</p> : <Link to='/login'><li>Login</li></Link>}
   </>
 
   return (
@@ -32,7 +44,7 @@ function Navbar() {
     </ul>
   </div>
   <div className="navbar-end">
-    <button className="btn btn-ghost">Log Out</button>
+  {user?.uid && <button onClick={handleSignOut}>Log Out</button>}
   </div>
 </div>
     </div>

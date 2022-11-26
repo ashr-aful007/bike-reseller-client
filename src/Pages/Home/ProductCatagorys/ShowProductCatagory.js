@@ -11,8 +11,8 @@ function ShowProductCatagory({catagoryall}) {
      <div className="card-body">
      <h2 className="card-title">{catagory}</h2>
      <p>{description}</p>
-     <div className="card-actions justify-end">
-          <Link to={`/productsdeatils/${id}`}><button className="btn bg-green-400 outline-none">See All products</button></Link>
+     <div className="card-actions justify-end">    
+          <Link to={`/productsdeatils/${id}`}><button className="btn bg-green-400 outline-none">See All products</button></Link>       
      </div>
      </div>
      </div>

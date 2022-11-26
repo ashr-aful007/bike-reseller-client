@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ShowProductsDeatils({product}) {
+function ShowProductsDeatils({product,setBayproducts}) {
      const {name,location,resalePrice,sellerName,productsUsdTime,catagoryId,productsCatagory,img} = product
   return (
     <div>
@@ -50,7 +50,9 @@ function ShowProductsDeatils({product}) {
 				<p>Loaction: <span className='font-normal'>{location}</span></p>
                     <p>Brand name: <span className='font-normal'>{name}</span></p>
 			</div>
-			<button className='btn btn-outline btn-success w-full'>Book Now</button>
+			<label htmlFor="Bay-modal" 
+			  onClick={() =>setBayproducts(product)}
+			className="btn btn-outline btn-success w-full">Book now</label>
 		</div>
 	</div>
 </div>
