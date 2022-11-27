@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp/SignUp";
 import ProductsDeatils from "../Pages/ProductsDeatils/ProductsDeatils";
 import Errorpage from "../Sheard/Errorpage";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -34,7 +35,7 @@ export const router = createBrowserRouter([
                },
                {
                     path:'/dashboard',
-                    element: <Dashbord></Dashbord>
+                    element: <PrivateRoute><Dashbord></Dashbord></PrivateRoute>
                }
           ]
      }
