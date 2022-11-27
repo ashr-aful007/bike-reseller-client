@@ -5,14 +5,14 @@ import logoB from '../../assets/bikeLogo.png'
 function Dashbordnavbar() {
      const navmenuItem =<li className='font-semibold'>
        {/* seller Role */}
-          <Link to='/dashboard/addproducts'><li>Add products</li></Link>
-          <Link to='/dashboard/myproducts'><li>My Products</li></Link>
+          <Link to='/dashboard/addproducts'>Add products</Link>
+          <Link to='/dashboard/myproducts'>My Products</Link>
       {/* admin role */}
-          <Link to='/dashboard/allseller'><li>All Seller</li></Link>
-          <Link to='/dashboard/allbyer'><li>All Byer</li></Link>
-          <Link to='/dashboard/reporteditem'><li>Reported Items</li></Link>
+          <Link to='/dashboard/allseller'>All Seller</Link>
+          <Link to='/dashboard/allbyer'>All Byer</Link>
+          <Link to='/dashboard/reporteditem'>Reported Items</Link>
       {/* user role */}
-          <Link to='/dashboard/myorders'><li>My Orders</li></Link> 
+          <Link to='/dashboard/myorders'>My Orders</Link> 
           </li>
      
   return (

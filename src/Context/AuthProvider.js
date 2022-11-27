@@ -35,7 +35,7 @@ function AuthProvider({children}) {
 
   //sign in with google
   const googleSignIn = () =>{
-     return signInWithPopup(auth,Provider)
+     return signInWithPopup(auth.currentUser,Provider)
   }
 
 
@@ -57,7 +57,8 @@ function AuthProvider({children}) {
        logOut,
        googleSignIn,
        updateUser,
-       loading
+       loading,
+       setLoading
      }
   return (
     <AuthContext.Provider value={authValue}>

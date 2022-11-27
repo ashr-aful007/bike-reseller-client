@@ -18,8 +18,7 @@ function SignUp() {
           createUser(data.email, data.password)
           .then(result =>{
              const user = result.user
-             toast.success('SignUp successfully')
-             navigate(from,{replace: true})
+             toast.success('SignUp successfully')           
              const userdata = {
                 displayName: data.name
             }  
@@ -28,6 +27,7 @@ function SignUp() {
             .catch(err => {
                 setError(err.message)
             })
+            navigate(from,{replace: true})
           })
           .catch(err => {
             setError(err.message)
@@ -50,7 +50,7 @@ function SignUp() {
           <form onSubmit={handleSubmit(handlelogin)}>
       <div className="form-control w-full max-w-xs">                 
           <label className="label"><span className="label-text-alt">name</span></label>        
-          <input type="text" {...register("name", {
+          <input name='name' type="name" {...register("name", {
           required: "Name is required"})} className="input input-bordered w-full max-w-xs"/> 
       </div>
          {errors.name && <p className='text-red-600' role="alert">{errors.name?.message}</p>}

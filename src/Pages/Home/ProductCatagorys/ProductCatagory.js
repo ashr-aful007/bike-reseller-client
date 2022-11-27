@@ -1,18 +1,27 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../../Context/AuthProvider'
+import Loading from '../../Loading/Loading'
 import ShowProductCatagory from './ShowProductCatagory'
 
 function ProductCatagory() {
+ 
   const url = 'http://localhost:5000/catagoty'
-  const {data: catagorydata=[]} = useQuery({
+  const {data: catagorydata=[],isLoading} = useQuery({
      queryKey:['catagoty'],
     queryFn: async () =>{
           const res = await fetch(url)
           const data = await res.json()
+          
           return data;
           
     }
+    
   })
+  if(isLoading){
+      return <Loading></Loading>
+  }
+
   
   return (
     <div>
