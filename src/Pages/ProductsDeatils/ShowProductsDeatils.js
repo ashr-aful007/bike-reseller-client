@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../Context/AuthProvider'
+import Loading from '../Loading/Loading'
 
 function ShowProductsDeatils({product,setBayproducts}) {
      const {name,location,resalePrice,sellerName,productsUsdTime,catagoryId,productsCatagory,img} = product
+
+	const {loading} = useContext(AuthContext)
+
+	if(loading){
+	  return <Loading></Loading>
+	}
   return (
     <div>
           <div className="rounded-md shadow-md  dark:bg-gray-900 dark:text-gray-100">

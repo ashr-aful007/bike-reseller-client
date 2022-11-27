@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
+import { AuthContext } from '../../Context/AuthProvider'
 import BayModalInfo from '../BayModalInfo/BayModalInfo'
+import Loading from '../Loading/Loading'
 import ShowProductsDeatils from './ShowProductsDeatils'
 
 function ProductsDeatils() {
      const products = useLoaderData()
      const [bayProducts, setBayproducts] = useState({})
-    
+  const {loading} = useContext(AuthContext)
+
+  if(loading){
+    return <Loading></Loading>
+  }
      
   return (
       <div className='m-3'>
