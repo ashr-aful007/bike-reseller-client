@@ -3,7 +3,8 @@ import { AuthContext } from '../../Context/AuthProvider'
 import Loading from '../Loading/Loading'
 
 function ShowProductsDeatils({product,setBayproducts}) {
-     const {name,location,resalePrice,sellerName,productsUsdTime,catagoryId,productsCatagory,img} = product
+     const {name,location,resalePrice,sellerName,productsUsdTime
+		,productsCatagory,img,postDate,marketPrice,condisonType} = product
 
 	const {loading} = useContext(AuthContext)
 
@@ -56,7 +57,9 @@ function ShowProductsDeatils({product,setBayproducts}) {
 				<p>Resell Price: <span className='font-normal'>{resalePrice}</span></p>
 				<p>Porduct used time: <span className='font-normal'>{productsUsdTime}</span></p>
 				<p>Loaction: <span className='font-normal'>{location}</span></p>
-                    <p>Brand name: <span className='font-normal'>{name}</span></p>
+                    <p>Post Date: <span className='font-normal'>{postDate}</span></p>
+                    <p>Market Price: <span className='font-normal'>{marketPrice}</span></p>
+                    <p>Condison type: <span className='font-normal'>{condisonType}</span></p>
 			</div>
 			<label htmlFor="Bay-modal" 
 			  onClick={() =>setBayproducts(product)}

@@ -18,16 +18,18 @@ function SignUp() {
           createUser(data.email, data.password)
           .then(result =>{
              const user = result.user
-             toast.success('SignUp successfully')           
+             toast.success('SignUp successfully')  
+             addUserToDb(data)          
              const userdata = {
                 displayName: data.name
             }  
             updateUser(userdata)
-            .then(() =>{})
+            .then(() =>{
+                          
+            })
             .catch(err => {
                 setError(err.message)
-            })
-            navigate(from,{replace: true})
+            })         
           })
           .catch(err => {
             setError(err.message)
@@ -43,6 +45,30 @@ function SignUp() {
             setError(err.message)
         })
      }
+
+     //create user for db collection
+     const addUserToDb = (data) =>{
+        const user ={
+         name : data.name,
+         email: data.email,
+         role : data.userData
+     }
+        fetch('http://localhost:5000/user',{
+           method: 'POST',
+           headers:{
+              'content-type': 'application/json'
+           },
+           body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          navigate(from,{replace: true})
+        })
+     }
+
+
+
   return (
      <div className='h-[750px] flex justify-center items-center '>
      <div className='w-96 p-10 border-2 rounded-lg'>

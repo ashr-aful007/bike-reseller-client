@@ -1,6 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useContext, useState } from 'react'
-import { AuthContext } from '../../../Context/AuthProvider'
 import Loading from '../../Loading/Loading'
 import ShowProductCatagory from './ShowProductCatagory'
 
@@ -14,7 +12,7 @@ function ProductCatagory() {
           const data = await res.json()
           
           return data;
-          
+         
     }
     
   })

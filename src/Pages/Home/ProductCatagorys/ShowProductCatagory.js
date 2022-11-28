@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function ShowProductCatagory({catagoryall}) {
-     const {catagory, img, id, description} = catagoryall
+     const {catagory, img, description,catagoryId} = catagoryall
      
   return (
     <div>
@@ -12,7 +12,7 @@ function ShowProductCatagory({catagoryall}) {
      <h2 className="card-title">{catagory}</h2>
      <p>{description}</p>
      <div className="card-actions justify-end">    
-          <Link to={`/productsdeatils/${id}`}><button className="btn bg-green-400 outline-none">See All products</button></Link>       
+          <Link to={`/productsdeatils/${catagoryId}`}><button className="btn bg-green-400 outline-none">See All products</button></Link>       
      </div>
      </div>
      </div>
