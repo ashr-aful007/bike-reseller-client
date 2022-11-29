@@ -3,37 +3,49 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../Context/AuthProvider'
+import useToken from '../../../Hooks/useToken'
 
 function SignUp() {
      const {register, formState: { errors },handleSubmit} = useForm()
      const {createUser,googleSignIn,updateUser} = useContext(AuthContext)
-     const [signuperror, setError] = useState('')
+     const [signuperror, setError] = useState('');
+
+     const [userEmail, setUserEmail] = useState('')
+     const [token] = useToken(userEmail)
    const location = useLocation()
    const navigate = useNavigate()
 
-     const from = location.state?.from?.pathname || '/'
+
+   const from = location.state?.from?.pathname || '/'
+
+   if(token){
+       navigate(from,{replace: true})
+   }
+     
      
      const handlelogin = data =>{
         setError('')
-          createUser(data.email, data.password)
+        addUserToDb(data.email, data.password, data.userData)
+
+        createUser(data.email, data.password)
           .then(result =>{
              const user = result.user
-             toast.success('SignUp successfully')  
-             addUserToDb(data)          
+             toast.success('SignUp successfully')                      
              const userdata = {
                 displayName: data.name
-            }  
+            } 
+            .catch(err => {
+              setError(err.message)
+            }) 
+
             updateUser(userdata)
-            .then(() =>{
-                          
+            .then(() =>{                          
             })
             .catch(err => {
                 setError(err.message)
             })         
           })
-          .catch(err => {
-            setError(err.message)
-          })
+        
      }
 
      const handlegoogleSignIn = () =>{
@@ -46,40 +58,22 @@ function SignUp() {
         })
      }
 
-     //create user for db collection
-     const addUserToDb = (data) =>{
-        const user ={
-         name : data.name,
-         email: data.email,
-         role : data.userData
-     }
-        fetch('http://localhost:5000/user',{
-           method: 'POST',
-           headers:{
-              'content-type': 'application/json'
-           },
-           body: JSON.stringify(user)
-        })
-        .then(res => res.json())
-        .then(data => {
-          getUserToken()
-          
-        })
-        const getUserToken = () =>{
-            fetch(`http://localhost:5000/jwt?email=${data.email}`)
-            .then(res => res.json())
-            .then(data => {
-              if(data.accesstoken){
-                localStorage.setItem('accesstoken', data.accesstoken)
-                navigate(from,{replace: true})
-              }
-            })
-         }
-     }
-
-
-
-
+  const addUserToDb = (name, email,role)=>{
+    const user = {name, email, role}
+    fetch('http://localhost:5000/user',{
+      method: 'POST',
+      headers:{
+         'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+   })
+   .then(res => res.json())
+   .then(data => {
+     console.log(data)
+     setUserEmail(email)         
+   })
+ }
+  
   return (
      <div className='h-[750px] flex justify-center items-center '>
      <div className='w-96 p-10 border-2 rounded-lg'>
