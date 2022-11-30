@@ -72,7 +72,6 @@ function SignUp() {
    })
    .then(res => res.json())
    .then(data => {
-     console.log(data)
      setUserEmail(email)         
    })
  }

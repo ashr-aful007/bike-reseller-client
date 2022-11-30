@@ -14,7 +14,6 @@ function AllSeller() {
            return data
        }
     })
-    console.log(sellers)
     if(isLoading){
        return <Loading></Loading>
     }

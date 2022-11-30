@@ -21,7 +21,6 @@ function MyProducts() {
              return data
         }
   })
-  console.log(MyProducts)
    if(isLoading){
       return <Loading></Loading>
    }
