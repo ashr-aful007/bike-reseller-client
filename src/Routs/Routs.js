@@ -13,7 +13,9 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp/SignUp";
 import ProductsDeatils from "../Pages/ProductsDeatils/ProductsDeatils";
 import Errorpage from "../Sheard/Errorpage";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 
 
@@ -49,23 +51,23 @@ export const router = createBrowserRouter([
           children: [
                {
                     path: '/dashboard/addproducts',
-                    element: <AddProducts></AddProducts>
+                    element: <SellerRoute><AddProducts></AddProducts></SellerRoute>
                },
                {
                     path: '/dashboard/myproducts',
-                    element: <MyProducts></MyProducts>
+                    element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
                },
                {
                     path: '/dashboard/allseller',
-                    element:<AllSeller></AllSeller>
+                    element:<AdminRoute><AllSeller></AllSeller></AdminRoute>
                },
                {
                     path: '/dashboard/allbyer',
-                    element:<AllByer></AllByer>
+                    element:<AdminRoute><AllByer></AllByer></AdminRoute>
                },
                {
                     path: '/dashboard/reporteditem',
-                    element:<ReportedItems></ReportedItems>
+                    element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
                },
                {
                     path: '/dashboard/myorders',

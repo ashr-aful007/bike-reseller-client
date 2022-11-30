@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logoB from '../../assets/bikeLogo.png'
+import { AuthContext } from '../../Context/AuthProvider'
+import useAdmin from '../../Hooks/useAdmin'
+import useSeller from '../../Hooks/useSeller'
+import useUser from '../../Hooks/useUser'
 
 function Dashbordnavbar() {
+   const {user} = useContext(AuthContext)
+  const [isAdmin] = useAdmin(user?.email)
+  const [isSeller] = useSeller(user?.email)
+  const [isUser] = useUser(user?.email)
+  
+
+  
      const navmenuItem =<li className='font-semibold'>
-       {/* seller Role */}
-          <Link to='/dashboard/addproducts'>Add products</Link>
-          <Link to='/dashboard/myproducts'>My Products</Link>
-      {/* admin role */}
+
+        {
+        isSeller && <><Link to='/dashboard/addproducts'>Add products</Link>
+        <Link to='/dashboard/myproducts'>My Products</Link></>
+        }
+      
+       { isAdmin && <>
           <Link to='/dashboard/allseller'>All Seller</Link>
           {/* <Link to='/dashboard/allbyer'>All Byer</Link> */}
           <Link to='/dashboard/reporteditem'>Reported Items</Link>
-      {/* user role */}
-          <Link to='/dashboard/myorders'>My Orders</Link> 
-          </li>
+       </>
+       }
+        { isUser && <Link to='/dashboard/myorders'>My Orders</Link>} 
+        </li>
      
   return (
     <div>
