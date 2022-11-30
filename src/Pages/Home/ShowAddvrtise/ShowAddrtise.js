@@ -4,7 +4,7 @@ function ShowAddrtise({advertise,setBayproducts}) {
      const {img,productsCatagory,sellerName,resalePrice,
           productsUsdTime,location,postDate,marketPrice,condisonType,} =advertise
   return (
-    <div>
+    <div className='m-3'>
                  <div className="rounded-md shadow-md  dark:bg-gray-900 dark:text-gray-100">
 	<div className="flex items-center justify-between p-3">
 		<div className="flex items-center space-x-2">
