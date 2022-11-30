@@ -63,7 +63,7 @@ function SignUp() {
 
   const addUserToDb = (email, name,role)=>{
     const user = {email, name, role}
-    fetch('http://localhost:5000/user',{
+    fetch('https://y-gules-mu.vercel.app/user',{
       method: 'POST',
       headers:{
          'content-type': 'application/json'

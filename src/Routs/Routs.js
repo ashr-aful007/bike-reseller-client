@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
                },
                {
                    path: '/productsdeatils/:id',
-                   loader: ({params}) => fetch(`http://localhost:5000/productscatagory/${params.id}`),
+                   loader: ({params}) => fetch(`https://y-gules-mu.vercel.app/productscatagory/${params.id}`),
                    element: <ProductsDeatils></ProductsDeatils>
                },
                {

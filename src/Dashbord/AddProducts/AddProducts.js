@@ -26,7 +26,7 @@ function AddProducts() {
 			img: data.img, 
 			postDate: new Date()
 		}
-		fetch('http://localhost:5000/addProducts',{
+		fetch('https://y-gules-mu.vercel.app/addProducts',{
 			method: 'POST',
 			headers:{
 				'content-type' : 'application/json'

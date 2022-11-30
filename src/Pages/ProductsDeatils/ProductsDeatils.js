@@ -9,6 +9,7 @@ function ProductsDeatils() {
      const products = useLoaderData()
      const [bayProducts, setBayproducts] = useState({})
   const {loading} = useContext(AuthContext)
+  
 
   if(loading){
     return <Loading></Loading>

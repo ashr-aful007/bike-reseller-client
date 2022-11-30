@@ -10,7 +10,7 @@ import ShowAddrtise from './ShowAddvrtise/ShowAddrtise'
 
 function Home() {
   const [bayProducts, setBayproducts] = useState('')
-   const url = `http://localhost:5000/products/alladvertise`
+   const url = `https://y-gules-mu.vercel.app/products/alladvertise`
     const {data: advertiseItem = [], isLoading, refetch} = useQuery({
         queryKey: ['products'],
         queryFn: async() =>{

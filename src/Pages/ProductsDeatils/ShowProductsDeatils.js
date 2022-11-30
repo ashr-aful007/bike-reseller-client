@@ -17,6 +17,8 @@ function ShowProductsDeatils({product,setBayproducts}) {
 		 return data
 	   }	   
 	})
+
+
 	if(loading){
 	  return <Loading></Loading>
 	}

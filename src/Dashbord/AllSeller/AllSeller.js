@@ -5,7 +5,7 @@ import Loading from '../../Pages/Loading/Loading'
 
 
 function AllSeller() {
-   const url = `http://localhost:5000/users?role=seller`
+   const url = `https://y-gules-mu.vercel.app/users?role=seller`
     const {data: sellers =[], isLoading,refetch} = useQuery({
        queryKey: ['users'],
        queryFn: async() => {
@@ -19,7 +19,7 @@ function AllSeller() {
     }
 
     const handleverify = id =>{
-        fetch(`http://localhost:5000/users/vrify/${id}`,{
+        fetch(`https://y-gules-mu.vercel.app/users/vrify/${id}`,{
            method: 'PUT'
         })
         .then(res => res.json())
@@ -32,7 +32,7 @@ function AllSeller() {
     }
 
     const handleDelete = id =>{
-        fetch(`http://localhost:5000/users/${id}`,{
+        fetch(`https://y-gules-mu.vercel.app/users/${id}`,{
            method: 'DELETE'
         })
         .then(res => res.json())

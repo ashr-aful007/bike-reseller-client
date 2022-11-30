@@ -2,23 +2,25 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
-function ShowMyProducts({myProduct}){
-     const {img,resalePrice,sellerName,productsCatagory,location,marketPrice,_id} = myProduct
+function ShowMyProducts({myProduct}){    
+      
+      const {img,resalePrice,sellerName,productsCatagory,location,marketPrice,_id} = myProduct
      
           const handleDelete = id =>{
-             fetch(`http://localhost:5000/myproducts/${id}`,{
+             fetch(`https://y-gules-mu.vercel.app/myproducts/${id}`,{
                method: 'DELETE'
              })
              .then(res => res.json())
              .then(data => {
-               if(data.deletedCount){
+               if(data.deletedCount > 0){
                     toast.success('product delete successful')
+                    
                }
              })
           }
 
           const handleAdvertise = id =>{
-               fetch(`http://localhost:5000/products/advertise/${id}`,{
+               fetch(`https://y-gules-mu.vercel.app/products/advertise/${id}`,{
                     method: 'PUT'
                })
                .then(res => res.json())

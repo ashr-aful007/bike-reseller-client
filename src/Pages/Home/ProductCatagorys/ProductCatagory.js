@@ -4,7 +4,7 @@ import ShowProductCatagory from './ShowProductCatagory'
 
 function ProductCatagory() {
  
-  const url = 'http://localhost:5000/catagoty'
+  const url = 'https://y-gules-mu.vercel.app/catagoty'
   const {data: catagorydata=[],isLoading} = useQuery({
      queryKey:['catagoty'],
     queryFn: async () =>{
