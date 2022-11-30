@@ -3,7 +3,7 @@ import AddProducts from '../AddProducts/AddProducts'
 
 function Dashbord() {
   return (
-    <div>
+    <div className='h-screen'>
       <AddProducts></AddProducts>
     </div>
   )

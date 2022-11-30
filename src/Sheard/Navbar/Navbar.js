@@ -16,8 +16,12 @@ function Navbar() {
        .catch(err => console.log(err))
   }
 
-  const navMenu =<>
-    {user?.email ? <Link to='/dashboard'><li>Dashboard</li></Link> : <Link to='/login'><li>Login</li></Link>}
+  const navMenu =<>    
+    <li><Link className='font-semibold' to='/'>Home</Link></li> 
+    <li><Link className='font-semibold' to='/Blog'>Blog</Link></li> 
+     <li><Link className='font-semibold' to='/dashboard'>Dashboard</Link></li>
+     {user?.email ? <><li><p>{user?.name}</p></li></>
+     : <li><Link className='font-semibold' to='/login'>Login</Link></li>}
   </>
 
   return (
@@ -44,7 +48,7 @@ function Navbar() {
        {navMenu}
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end font-semibold">
   {user?.uid && <button onClick={handleSignOut}>Log Out</button>}
   </div>
   </div> 

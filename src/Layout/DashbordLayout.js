@@ -9,7 +9,6 @@ function DashbordLayout() {
     <div>
      <Dashbordnavbar></Dashbordnavbar>
       <Outlet></Outlet>
-     <Footer></Footer>
     </div>
   )
 }

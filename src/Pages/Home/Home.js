@@ -4,6 +4,7 @@ import BayModalInfo from '../BayModalInfo/BayModalInfo'
 import Loading from '../Loading/Loading'
 import Banner from './Banner/Banner'
 import ProductCatagory from './ProductCatagorys/ProductCatagory'
+import SeconderyBanner from './SeconderyBanner/SeconderyBanner'
 import ShowAddrtise from './ShowAddvrtise/ShowAddrtise'
 
 
@@ -46,6 +47,9 @@ function Home() {
      </div> 
      </div>    
      }
+     <div>
+      <SeconderyBanner></SeconderyBanner>
+     </div>
     </div>
   )
 }

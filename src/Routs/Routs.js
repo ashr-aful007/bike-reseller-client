@@ -8,6 +8,7 @@ import MyProducts from "../Dashbord/MyProducts/MyProducts";
 import ReportedItems from "../Dashbord/ReportedItems/ReportedItems";
 import DashbordLayout from "../Layout/DashbordLayout";
 import Main from "../Layout/Main";
+import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp/SignUp";
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
                {
                     path: '/signup',
                     element:<SignUp></SignUp>
+               },
+               {
+                    path: '/Blog',
+                    element:<Blog></Blog>
                }
             
           ]

@@ -44,7 +44,7 @@ function AllSeller() {
 
     }
   return (
-   <div className='w-3/4 mx-auto'>
+   <div className='w-3/4 mx-auto h-screen'>
    <div className="overflow-x-auto">
   <table className="table w-full">
     <thead>

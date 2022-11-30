@@ -2,7 +2,9 @@ import React from 'react'
 
 function ReportedItems() {
   return (
-    <div>ReportedItems</div>
+    <div className='h-screen'>
+      ReportedItems
+    </div>
   )
 }
 
