@@ -9,7 +9,7 @@ function MyProducts() {
   const {user} = useContext(AuthContext)
   const url = `http://localhost:5000/addProducts?email=${user?.email}`;
 
-  const {data: MyProducts=[], isLoading } = useQuery({
+  const {data: MyProducts=[], isLoading,refetch } = useQuery({
         queryKey: ['addProducts', user?.email],
         queryFn: async () => {
              const res = await fetch(url,{
@@ -18,6 +18,7 @@ function MyProducts() {
               }
              })
              const data = await res.json()
+             refetch()
              return data
         }
   })

@@ -1,8 +1,34 @@
-import React from 'react'
+
+import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 
 function ShowMyProducts({myProduct}){
-     const {img,resalePrice,sellerName,productsCatagory,location,marketPrice} = myProduct
- 
+     const {img,resalePrice,sellerName,productsCatagory,location,marketPrice,_id} = myProduct
+     
+          const handleDelete = id =>{
+             fetch(`http://localhost:5000/myproducts/${id}`,{
+               method: 'DELETE'
+             })
+             .then(res => res.json())
+             .then(data => {
+               if(data.deletedCount){
+                    toast.success('product delete successful')
+               }
+             })
+          }
+
+          const handleAdvertise = id =>{
+               fetch(`http://localhost:5000/products/advertise/${id}`,{
+                    method: 'PUT'
+               })
+               .then(res => res.json())
+               .then(data => {
+                    if(data.modifiedCount > 0){
+                         toast.success('Advertise successfuly')
+                    }
+               })
+          }
+
   return (
     <div>
          <div className='my-5 m-2'>
@@ -17,7 +43,8 @@ function ShowMyProducts({myProduct}){
           <p><span className='font-semibold'>Byer Name:</span> {location}</p>
      </div>
      <div className="card-actions justify-end pb-4">
-          <button className="btn bg-green-500 lg:mt-6">Advertise</button>
+          <button onClick={()=>handleAdvertise(_id)} className="btn btn-xs bg-green-500 lg:mt-6">Advertise</button>
+          <button onClick={()=>handleDelete(_id)} className="btn btn-xs bg-red-600 lg:mt-6">delete</button>
      </div>
      </div>
      </div>

@@ -30,6 +30,19 @@ function AllSeller() {
           }
         })
     }
+
+    const handleDelete = id =>{
+        fetch(`http://localhost:5000/users/${id}`,{
+           method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.deletedCount > 0){
+              toast.success('delete successfull')
+          }
+        })
+
+    }
   return (
    <div className='w-3/4 mx-auto'>
    <div className="overflow-x-auto">
@@ -53,7 +66,7 @@ function AllSeller() {
           <td>{seller.email}</td>
           <td>{seller.role}</td>
         <td>{seller.isVrifyed !== 'true' && <button onClick={() =>handleverify(seller._id)} className='btn btn-xs btn-primary mx-3'>Verify</button>}
-          <button className='btn btn-xs outline-none bg-red-600'>delet</button>
+          <button onClick={() =>handleDelete(seller._id)} className='btn btn-xs outline-none bg-red-600'>delet</button>
           </td>
         </tr> )
      }   
