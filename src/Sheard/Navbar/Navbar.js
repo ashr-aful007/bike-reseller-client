@@ -10,6 +10,7 @@ function Navbar() {
   const handleSignOut = () =>{
        logOut()
        .then(() =>{
+        localStorage.removeItem('accesstoken')
         toast.success('Log out successfully')
        })
        .catch(err => console.log(err))

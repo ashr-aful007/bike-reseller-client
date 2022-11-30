@@ -30,12 +30,12 @@ function AuthProvider({children}) {
 
   //update user
   const updateUser = (userdata) =>{
-      return updateProfile(user, userdata);
+      return updateProfile(auth.currentUser, userdata);
   }
 
   //sign in with google
   const googleSignIn = () =>{
-     return signInWithPopup(auth.currentUser,Provider)
+     return signInWithPopup(auth,Provider)
   }
 
 

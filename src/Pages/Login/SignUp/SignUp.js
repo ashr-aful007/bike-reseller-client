@@ -22,10 +22,21 @@ function SignUp() {
        navigate(from,{replace: true})
    }
      
+   //google sign in
+   const handlegoogleSignIn = () =>{
+    googleSignIn()
+    .then(result =>{
+        const user = result.user 
+        addUserToDb(user.email, user.name, 'user')               
+    })
+    .catch(err => {
+        setError(err.message)
+    })
+ }
      
      const handlelogin = data =>{
         setError('')
-        addUserToDb(data.email, data.password, data.userData)
+        addUserToDb(data.email, data.name, data.userData)
 
         createUser(data.email, data.password)
           .then(result =>{
@@ -48,18 +59,10 @@ function SignUp() {
         
      }
 
-     const handlegoogleSignIn = () =>{
-        googleSignIn()
-        .then(result =>{
-            const user = result.user                 
-        })
-        .catch(err => {
-            setError(err.message)
-        })
-     }
 
-  const addUserToDb = (name, email,role)=>{
-    const user = {name, email, role}
+
+  const addUserToDb = (email, name,role)=>{
+    const user = {email, name, role}
     fetch('http://localhost:5000/user',{
       method: 'POST',
       headers:{

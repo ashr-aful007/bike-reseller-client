@@ -14,20 +14,21 @@ function MyProducts() {
         queryFn: async () => {
              const res = await fetch(url,{
               headers:{
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('accesstoken')}`
               }
              })
              const data = await res.json()
              return data
         }
   })
+  console.log(MyProducts)
    if(isLoading){
       return <Loading></Loading>
    }
   return (
     <div>
         {
-          MyProducts.map(myProduct => <ShowMyProducts
+        MyProducts.length &&  MyProducts?.map(myProduct => <ShowMyProducts
             myProduct={myProduct}
             key={myProduct._id}
           ></ShowMyProducts>)

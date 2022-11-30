@@ -16,7 +16,6 @@ function ProductCatagory() {
     }
     
   })
-  console.log(catagorydata)
   if(isLoading){
       return <Loading></Loading>
   }
