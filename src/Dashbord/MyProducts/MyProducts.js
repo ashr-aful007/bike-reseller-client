@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react'
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider'
 import Loading from '../../Pages/Loading/Loading';
 import ShowMyProducts from './ShowMyProducts';
@@ -17,11 +18,22 @@ function MyProducts() {
                 authorization: `bearer ${localStorage.getItem('accesstoken')}`
               }
              })
-             const data = await res.json()
-             refetch()
+             const data = await res.json()            
              return data
         }
   })
+  const handleDelete = id =>{
+    fetch(`https://y-gules-mu.vercel.app/myproducts/${id}`,{
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.deletedCount > 0){
+        refetch()
+           toast.success('product delete successful')          
+      }
+    })
+ }
    if(isLoading){
       return <Loading></Loading>
    }
@@ -31,6 +43,7 @@ function MyProducts() {
         MyProducts.length &&  MyProducts?.map(myProduct => <ShowMyProducts
             myProduct={myProduct}
             key={myProduct._id}
+            handleDelete={handleDelete}
           ></ShowMyProducts>)
         }
     </div>
