@@ -9,7 +9,7 @@ function Dashbordnavbar() {
           <Link to='/dashboard/myproducts'>My Products</Link>
       {/* admin role */}
           <Link to='/dashboard/allseller'>All Seller</Link>
-          <Link to='/dashboard/allbyer'>All Byer</Link>
+          {/* <Link to='/dashboard/allbyer'>All Byer</Link> */}
           <Link to='/dashboard/reporteditem'>Reported Items</Link>
       {/* user role */}
           <Link to='/dashboard/myorders'>My Orders</Link> 
