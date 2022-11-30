@@ -20,7 +20,7 @@ function Home() {
                    
         }             
     })
-    console.log(advertiseItem)
+  
 
     if(isLoading){
        return <Loading></Loading>

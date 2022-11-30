@@ -1,15 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import React, { useContext } from 'react'
+import toast from 'react-hot-toast'
 import { AuthContext } from '../../Context/AuthProvider'
 import Loading from '../Loading/Loading'
 
 function ShowProductsDeatils({product,setBayproducts}) {
      const {name,location,resalePrice,sellerName,productsUsdTime
-		,productsCatagory,img,postDate,marketPrice,condisonType} = product
+		,productsCatagory,img,postDate,marketPrice,condisonType,_id} = product
 
 	const {loading} = useContext(AuthContext)
-	const url = `http://localhost:5000/users/vrify`
-	const {data: vrifyUser ={}} = useQuery({
+	const url = `https://y-gules-mu.vercel.app/users/vrify`
+	const {data: vrifyUser =[]} = useQuery({
 	   queryKey:['users'],
 	   queryFn: async() => {
 		const res = await fetch(url)
@@ -17,6 +18,17 @@ function ShowProductsDeatils({product,setBayproducts}) {
 		 return data
 	   }	   
 	})
+   const handleReportItem = id =>{
+	  fetch(`https://y-gules-mu.vercel.app/reported/${id}`,{
+		 method: 'PUT'
+	  })
+	  .then(res => res.json())
+	  .then(data => {
+	     if(data.modifiedCount > 0){
+			toast.success('Report successfull')
+		}
+       })
+   }
 
 
 	if(loading){
@@ -53,11 +65,7 @@ function ShowProductsDeatils({product,setBayproducts}) {
 					</svg>
 				</button>
 			</div>
-			<button type="button" title="Bookmark post" className="flex items-center justify-center">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-					<path d="M424,496H388.75L256.008,381.19,123.467,496H88V16H424ZM120,48V456.667l135.992-117.8L392,456.5V48Z"></path>
-				</svg>
-			</button>
+		    <button onClick={() =>handleReportItem(_id)} className='btn btn-xs bg-warning'>Report</button>
 		</div>
 		<div className="flex flex-wrap pt-3 pb-1">
 			<div className="flex items-center space-x-2">			
