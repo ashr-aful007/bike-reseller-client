@@ -1,32 +1,14 @@
-import { useQuery } from '@tanstack/react-query'
-import React, { useContext } from 'react'
-import { AuthContext } from '../../Context/AuthProvider'
-import Loading from '../Loading/Loading'
+import React from 'react'
 
-function ShowProductsDeatils({product,setBayproducts}) {
-     const {name,location,resalePrice,sellerName,productsUsdTime
-		,productsCatagory,img,postDate,marketPrice,condisonType} = product
-
-	const {loading} = useContext(AuthContext)
-	const url = `http://localhost:5000/users/vrify`
-	const {data: vrifyUser ={}} = useQuery({
-	   queryKey:['users'],
-	   queryFn: async() => {
-		const res = await fetch(url)
-		const data = await res.json()
-		 return data
-	   }	   
-	})
-	if(loading){
-	  return <Loading></Loading>
-	}
+function ShowAddrtise({advertise,setBayproducts}) {
+     const {img,productsCatagory,sellerName,resalePrice,
+          productsUsdTime,location,postDate,marketPrice,condisonType,} =advertise
   return (
     <div>
-	
-          <div className="rounded-md shadow-md  dark:bg-gray-900 dark:text-gray-100">
+                 <div className="rounded-md shadow-md  dark:bg-gray-900 dark:text-gray-100">
 	<div className="flex items-center justify-between p-3">
 		<div className="flex items-center space-x-2">
-			<div className="-space-y-1">							
+			<div className="-space-y-1">
 				<h2 className="text-sm font-semibold leading-none">{sellerName}</h2>
 			</div>
 		</div>
@@ -72,7 +54,7 @@ function ShowProductsDeatils({product,setBayproducts}) {
                     <p>Condison type: <span className='font-normal'>{condisonType}</span></p>
 			</div>
 			<label htmlFor="Bay-modal" 
-			  onClick={() =>setBayproducts(product)}
+			  onClick={() =>setBayproducts(advertise)}
 			className="btn btn-outline btn-success w-full">Book now</label>
 		</div>
 	</div>
@@ -81,4 +63,4 @@ function ShowProductsDeatils({product,setBayproducts}) {
   )
 }
 
-export default ShowProductsDeatils
+export default ShowAddrtise
