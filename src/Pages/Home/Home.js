@@ -35,7 +35,10 @@ function Home() {
      ></BayModalInfo>
      {  advertiseItem.length &&
      <div>
-      <h2 className='text-3xl font-semibold text-center my-8'>All Advertise Items</h2>
+      <div className='my-8'>
+      <h2 className='text-3xl font-semibold text-center'>All Advertise Items</h2>
+      <p className='text-center font-semibold'>See all advertise items</p>
+      </div>
      <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>             
         {
           advertiseItem.map(advertise => <ShowAddrtise

@@ -23,8 +23,9 @@ function ProductCatagory() {
   
   return (
     <div>
-       <div className='my-8'>
-          <h3 className='text-2xl'>Chose your best bike</h3>
+       <div className='my-10 text-center'>
+          <h3 className='text-3xl font-semibold'>Chose your best bike</h3>
+          <p className='text-semibold'>Choose your bike category wise</p>
        </div>
     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-2'>
       {

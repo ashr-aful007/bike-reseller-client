@@ -17,8 +17,9 @@ function ProductsDeatils() {
      
   return (
       <div className='m-3 my-11'>
-        <div>
-            <h1 className='text-3xl font-semibold my-10'>Choose your best products!</h1>           
+        <div className='text-center my-12'>
+        <h1 className='text-3xl font-semibold'>Choose your best products!</h1> 
+            <p className='font-semibold'>there are many different products here</p>          
         </div>
         <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
         {

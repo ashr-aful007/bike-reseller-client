@@ -3,8 +3,10 @@ import secondImg from '../../../assets/spokester-com-bike-types-bike-child-seat.
 
 function SeconderyBanner() {
   return (
-    <div><div>
+    <div>
+	<div>
       <h2 className='text-3xl font-semibold text-center'>Our speciality</h2>
+	 <p className='text-center font-semibold'>see our speciality</p>
     </div>
      <section className="bg-gray-800 text-gray-100 my-9 w-4/5 mx-auto rounded">
 	<div className="container flex flex-col-reverse mx-auto lg:flex-row">
